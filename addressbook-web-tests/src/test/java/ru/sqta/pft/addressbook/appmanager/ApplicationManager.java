@@ -1,16 +1,17 @@
-package ru.sqta.pft.addressbook;
+package ru.sqta.pft.addressbook.appmanager;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import ru.sqta.pft.addressbook.model.GroupData;
 
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-  protected StringBuffer verificationErrors = new StringBuffer();
+  public StringBuffer verificationErrors = new StringBuffer();
   WebDriver wd;
-  private boolean acceptNextAlert = true;
+  public boolean acceptNextAlert = true;
 
-  protected void init() {
+  public void init() {
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
@@ -59,7 +60,7 @@ public class ApplicationManager {
     wd.findElement(By.linkText("groups")).click();
   }
 
-  protected void stop() {
+  public void stop() {
     wd.quit();
   }
 

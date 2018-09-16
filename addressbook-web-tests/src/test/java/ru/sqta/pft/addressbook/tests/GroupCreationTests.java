@@ -1,8 +1,9 @@
-package ru.sqta.pft.addressbook;
+package ru.sqta.pft.addressbook.tests;
 
 import org.testng.annotations.*;
+import ru.sqta.pft.addressbook.model.GroupData;
 
-public class GroupCreationTests extends TestBase{
+public class GroupCreationTests extends TestBase {
 
   @Test
   public void testGroupCreation() throws Exception {

@@ -1,7 +1,8 @@
-package ru.sqta.pft.addressbook;
+package ru.sqta.pft.addressbook.tests;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import ru.sqta.pft.addressbook.appmanager.ApplicationManager;
 
 import static org.testng.Assert.fail;
 

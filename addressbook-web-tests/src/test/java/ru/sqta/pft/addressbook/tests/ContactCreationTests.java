@@ -1,4 +1,4 @@
-package ru.sqta.pft.addressbook;
+package ru.sqta.pft.addressbook.tests;
 
 import java.util.concurrent.TimeUnit;
 import org.testng.annotations.*;
@@ -6,8 +6,9 @@ import static org.testng.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
+import ru.sqta.pft.addressbook.model.ContactData;
 
-public class ContactCreationTests extends TestBase{
+public class ContactCreationTests extends TestBase {
   private WebDriver wd;
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
