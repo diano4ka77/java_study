@@ -106,4 +106,12 @@ public class TestBase {
       acceptNextAlert = true;
     }
   }
+
+  public void deleteSelectedGroup() {
+    wd.findElement(By.name("delete")).click();
+  }
+
+  public void selectGroup() {
+    wd.findElement(By.name("selected[]")).click();
+  }
 }
