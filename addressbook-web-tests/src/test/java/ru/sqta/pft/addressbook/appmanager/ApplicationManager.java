@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
   WebDriver wd;
+
   private ContactHelper contactHelper;
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
@@ -77,11 +78,8 @@ public class ApplicationManager {
     return sessionHelper;
   }
 
-  public void gotoHomePage() {
-    wd.findElement(By.linkText("home page")).click();
-  }
-
   public ContactHelper getContactHelper() {
     return contactHelper;
   }
+
 }
