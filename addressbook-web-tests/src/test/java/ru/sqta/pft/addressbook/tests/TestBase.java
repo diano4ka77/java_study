@@ -9,6 +9,8 @@ import static org.testng.Assert.fail;
 public class TestBase {
 
   protected final ApplicationManager app = new ApplicationManager();
+  private boolean acceptNextAlert = true;
+  private StringBuffer verificationErrors = new StringBuffer();
 
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
@@ -23,5 +25,4 @@ public class TestBase {
       fail(verificationErrorString);
     }
   }
-
 }
