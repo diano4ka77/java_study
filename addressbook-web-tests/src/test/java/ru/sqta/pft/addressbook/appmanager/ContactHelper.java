@@ -19,6 +19,14 @@ public class ContactHelper extends HelperBase{
     click(By.linkText("add new"));
   }
 
+  public void selectContact() {
+    click(By.name("selected[]"));
+  }
+
+  public void deleteSelectedContact() {
+    click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Select all'])[1]/following::input[2]"));
+  }
+
   public void fillContactForm(ContactData contactData) {
     type(By.name("firstname"),contactData.getFirstname());
     type(By.name("middlename"),contactData.getMiddlename());
