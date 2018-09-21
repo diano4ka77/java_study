@@ -10,7 +10,7 @@ public class ContactModifyTests extends TestBase{
   @Test
   public void testContactModify() throws Exception {
     app.getContactHelper().editContact();
-    app.getContactHelper().modifyContactForm(new ContactData("","","", "","", "","", "Chelyabinsk city"));
+    app.getContactHelper().fillContactForm(new ContactData(null,null,null, null,null, null,null, "Chelyabinsk city", null), false);
     app.getContactHelper().submitContactModify();
     app.getNavigationHelper().gotoHomePage();
     app.getSessionHelper().logout();
