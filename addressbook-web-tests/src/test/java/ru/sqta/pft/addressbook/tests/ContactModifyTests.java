@@ -12,7 +12,7 @@ public class ContactModifyTests extends TestBase{
 
   private ContactData contactData;
 
-  @Test
+  @Test(enabled = false)
   public void testContactModify() throws Exception {
     if (! app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("Testname", "Middlenametest", "Lastnametest", "789456123", "test@gmail.com", "Testcompanyname", "1990", null, "test1"));
