@@ -3,7 +3,6 @@ package ru.sqta.pft.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.sqta.pft.addressbook.model.ContactData;
-import ru.sqta.pft.addressbook.model.GroupData;
 
 import java.util.Comparator;
 import java.util.List;
@@ -22,7 +21,7 @@ public class ContactModifyTests extends TestBase{
     ContactData contact = new ContactData(before.get(before.size() - 1).getId(), "Testname1",null,"Lastnametest1", null,null, null,null, "Chelyabinsk city", null);
     app.getContactHelper().fillContactForm(contact, false);
     app.getContactHelper().submitContactModify();
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().homePage();
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size());
 

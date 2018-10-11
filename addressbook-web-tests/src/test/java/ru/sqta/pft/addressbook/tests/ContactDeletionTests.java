@@ -3,7 +3,6 @@ package ru.sqta.pft.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.sqta.pft.addressbook.model.ContactData;
-import ru.sqta.pft.addressbook.model.GroupData;
 
 import java.util.List;
 
@@ -18,7 +17,7 @@ public class ContactDeletionTests extends TestBase{
     app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().deleteSelectedContact();
     app.closeAlert();
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().homePage();
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size() - 1);
 
