@@ -84,11 +84,11 @@ public class ApplicationManager {
     return navigationHelper;
   }
 
-  public SessionHelper getSessionHelper() {
+  public SessionHelper session() {
     return sessionHelper;
   }
 
-  public ContactHelper getContactHelper() {
+  public ContactHelper contact() {
     return contactHelper;
   }
 
