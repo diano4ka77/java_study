@@ -7,13 +7,55 @@ public class ContactData {
   private String firstname;
   private String middlename;
   private String lastname;
-  private String mobilephone;
-
+  private String mobilePhone;
+  private String homePhone;
+  private String workPhone;
   private String email;
+  private String allPhones;
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
+  public String getEmail2() {
+    return email2;
+  }
+
+  public ContactData withEmail2(String email2) {
+    this.email2 = email2;
+    return this;
+  }
+
+  public String getEmail3() {
+    return email3;
+  }
+
+  public ContactData withEmail3(String email3) {
+    this.email3 = email3;
+    return this;
+  }
+
+  public String getallEmails() {
+    return allEmails;
+  }
+
+  public ContactData withallEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
+
+  private String email2;
+  private String email3;
+  private String allEmails;
   private String companyname;
   private String year;
   private String address;
   private String group;
+
+  public String getAllPhones() {
+    return allPhones;
+  }
 
   public int getId() {
     return id;
@@ -31,8 +73,8 @@ public class ContactData {
     return lastname;
   }
 
-  public String getMobilephone() {
-    return mobilephone;
+  public String getMobilePhone() {
+    return mobilePhone;
   }
 
   public String getEmail() {
@@ -53,6 +95,24 @@ public class ContactData {
 
   public String getGroup() {
     return group;
+  }
+
+  public String getHomePhone() {
+    return homePhone;
+  }
+
+  public String getWorkPhone() {
+    return workPhone;
+  }
+
+  public ContactData withHomePhone(String homePhone) {
+    this.homePhone = homePhone;
+    return this;
+  }
+
+  public ContactData withWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
+    return this;
   }
 
   public ContactData withId(int id) {
@@ -80,8 +140,8 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withMobilephone(String mobilephone) {
-    this.mobilephone = mobilephone;
+  public ContactData withMobilePhone(String mobilephone) {
+    this.mobilePhone = mobilephone;
     return this;
   }
 
