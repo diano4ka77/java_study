@@ -56,18 +56,11 @@ public class ContactHelper extends HelperBase{
 
   public void fillContactForm(ContactData contactData, boolean creation) {
     type(By.name("firstname"),contactData.getFirstname());
-    type(By.name("middlename"),contactData.getMiddlename());
+    //type(By.name("middlename"),contactData.getMiddlename());
     type(By.name("lastname"),contactData.getLastname());
     type(By.name("mobile"),contactData.getMobilephone());
     type(By.name("email"),contactData.getEmail());
-    type(By.name("company"),contactData.getCompanyname());
-    attach(By.name("photo"), contactData.getPhoto());
-    click(By.name("bday"));
-    new Select(wd.findElement(By.name("bday"))).selectByVisibleText("1");
-    click(By.xpath("//div[@id='content']/form/select/option[3]"));
-    new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText("July");
-    click(By.xpath("//div[@id='content']/form/select[2]/option[8]"));
-    type(By.name("byear"),contactData.getYear());
+    //attach(By.name("photo"), contactData.getPhoto());
 
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());

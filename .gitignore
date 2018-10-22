@@ -21,3 +21,5 @@ addressbook-web-tests/src/test/resources/stru.png
 addressbook-web-tests/out/test/resources/stru.png
 addressbook-web-tests/src/test/resources/groups.json
 addressbook-web-tests/out/test/resources/groups.json
+addressbook-web-tests/src/test/resources/contacts.json
+addressbook-web-tests/out/test/resources/contacts.json
