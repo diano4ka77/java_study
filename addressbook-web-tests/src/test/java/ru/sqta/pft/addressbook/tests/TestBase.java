@@ -9,7 +9,7 @@ import static org.testng.Assert.fail;
 
 public class TestBase {
 
-  protected static final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
+  protected static final ApplicationManager app = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
 
