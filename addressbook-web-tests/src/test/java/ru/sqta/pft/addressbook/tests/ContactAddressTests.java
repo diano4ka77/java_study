@@ -11,17 +11,18 @@ public class ContactAddressTests extends TestBase {
 
   @BeforeMethod
   public void ensurePrediction() {
-    app.goTo().homePage();
-    if (app.contact().all().size() == 0) {
-      app.contact().create(new ContactData().withFirstname("Mike2").withLastname("Smith2")
-              .withAddress("Canada"));
+    if (app.db().contacts().size() == 0) {
+      app.goTo().homePage();
+      app.contact().create(new ContactData().withFirstname("Testname").
+              withLastname("Lastnametest").withMobilephone("789456123").withEmail("test@gmail.com")
+              .withAddress("Chelyabinsk").withGroup("test1"));
     }
   }
 
   @Test
   public void testContactAddress() {
     app.goTo().homePage();
-    ContactData contact = app.contact().all().iterator().next();
+    ContactData contact = app.db().contacts().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
     assertThat(contact.getAddress(), equalTo(cleaned(contactInfoFromEditForm.getAddress())));
   }

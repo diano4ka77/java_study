@@ -31,7 +31,8 @@ public class ContactData {
   @Column(name = "address")
   @Type(type =  "text")
   private String address;
-  @Transient
+
+ @Transient
   private String group;
   @Column(name = "photo")
   @Type(type =  "text")
@@ -222,11 +223,16 @@ public class ContactData {
     ContactData that = (ContactData) o;
     return id == that.id &&
             Objects.equals(firstname, that.firstname) &&
-            Objects.equals(lastname, that.lastname);
+            Objects.equals(lastname, that.lastname) &&
+            Objects.equals(mobilephone, that.mobilephone) &&
+            Objects.equals(email, that.email) &&
+            Objects.equals(address, that.address) &&
+            Objects.equals(homePhone, that.homePhone) &&
+            Objects.equals(workPhone, that.workPhone);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, firstname, lastname);
+    return Objects.hash(id, firstname, lastname, mobilephone, email, address, homePhone, workPhone);
   }
 }
