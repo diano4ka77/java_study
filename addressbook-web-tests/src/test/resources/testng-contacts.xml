@@ -8,6 +8,8 @@
             <class name="ru.sqta.pft.addressbook.tests.ContactPhoneTests" />
             <class name="ru.sqta.pft.addressbook.tests.ContactAddressTests" />
             <class name="ru.sqta.pft.addressbook.tests.ContactEmailTests" />
+            <class name="ru.sqta.pft.addressbook.tests.AddContactInGroups" />
+            <class name="ru.sqta.pft.addressbook.tests.DeleteContactFromGroup" />
         </classes>
     </test>
 </suite>
