@@ -12,19 +12,20 @@ import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 
 public class MailHelper {
+  private final  Wiser wiser;
   private ApplicationManager app;
-  private final Wiser wiser;
+
 
   public MailHelper(ApplicationManager app) {
     this.app = app;
-    wiser = new Wiser;
+    wiser = new Wiser();
   }
 
   public List<MailMessage> waitForMail(int count, long timeout) {
     long start = System.currentTimeMillis();
     while (System.currentTimeMillis() < start + timeout) {
       if (wiser.getMessages().size() >= count) {
-        return wiser.getMessages().stream().map((m) -> toModelMail(m).collect(Collectors.toList());
+        return wiser.getMessages().stream().map((m) -> toModelMail(m)).collect(Collectors.toList());
       }
       try {
         Thread.sleep(1000);
