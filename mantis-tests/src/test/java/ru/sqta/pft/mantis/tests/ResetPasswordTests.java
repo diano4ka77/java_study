@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class ResetPasswordTests extends TestBase {
+
   private static SessionFactory sessionFactory;
 
   @BeforeMethod
@@ -32,18 +33,21 @@ public class ResetPasswordTests extends TestBase {
 
   @Test
   public void resetPasswordTest() throws IOException {
-    Session session = sessionFactory.openSession();
-    session.beginTransaction();
-    List<User> users = session.createQuery("from User").list();
-    for (User user : users) {
-      System.out.println(user);
-    }
-    session.getTransaction().commit();
-    session.close();
+      List<User> users = app.db().users();
+//    Временно закомментировано
+//    Session session = sessionFactory.openSession();
+//    session.beginTransaction();
+//    List<User> users = session.createQuery("from User").list();
+//    for (User user : users) {
+//      System.out.println(user);
+//    }
+//    session.getTransaction().commit();
+//    session.close();
     if (users.size() > 1) {
       User user = users.get(1);
       if (user.getId() == 1) {
         while (user.getId() == 1) {
+//          Вот здесь зацикливается
           user = users.listIterator().next();
         }
       }

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class DbHelper {
 
-  private static SessionFactory sessionFactory;
+  public static SessionFactory sessionFactory;
 
   public DbHelper() {
     sessionFactory = new Configuration().configure().buildSessionFactory();
