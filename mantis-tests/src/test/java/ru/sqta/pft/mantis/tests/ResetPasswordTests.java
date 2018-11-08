@@ -14,6 +14,7 @@ import ru.sqta.pft.mantis.model.User;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.ListIterator;
 
 public class ResetPasswordTests extends TestBase {
 
@@ -22,33 +23,17 @@ public class ResetPasswordTests extends TestBase {
   @BeforeMethod
   public void startMailServer() {
     app.mail().start();
-    try {
-      // Create the SessionFactory from hibernate.cfg.xml
-      sessionFactory = new Configuration().configure().buildSessionFactory();
-    } catch (Throwable ex) {
-      ex.printStackTrace();
-      throw new ExceptionInInitializerError(ex);
-    }
   }
 
   @Test
   public void resetPasswordTest() throws IOException {
-      List<User> users = app.db().users();
-//    Временно закомментировано
-//    Session session = sessionFactory.openSession();
-//    session.beginTransaction();
-//    List<User> users = session.createQuery("from User").list();
-//    for (User user : users) {
-//      System.out.println(user);
-//    }
-//    session.getTransaction().commit();
-//    session.close();
+    List<User> users = app.db().users();
+    ListIterator<User> iterator = users.listIterator();
     if (users.size() > 1) {
-      User user = users.get(1);
+      User user = iterator.next();
       if (user.getId() == 1) {
         while (user.getId() == 1) {
-//          Вот здесь зацикливается
-          user = users.listIterator().next();
+          user = iterator.next();
         }
       }
       app.registration().login("administrator", "root");
@@ -66,7 +51,7 @@ public class ResetPasswordTests extends TestBase {
   }
 
 
-  public  String findConfirmationLink(List<MailMessage> mailMessages, String email) {
+  public String findConfirmationLink(List<MailMessage> mailMessages, String email) {
     MailMessage mailMessage = mailMessages.stream().filter((m) -> m.to.equals(email)).findFirst().get();
     VerbalExpression regex = VerbalExpression.regex().find("http://").nonSpace().oneOrMore().build();
     return regex.getText(mailMessage.text);
