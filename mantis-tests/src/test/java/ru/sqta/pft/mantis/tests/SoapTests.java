@@ -3,7 +3,9 @@ package ru.sqta.pft.mantis.tests;
 import biz.futureware.mantis.rpc.soap.client.MantisConnectLocator;
 import biz.futureware.mantis.rpc.soap.client.MantisConnectPortType;
 import biz.futureware.mantis.rpc.soap.client.ProjectData;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+import ru.sqta.pft.mantis.model.Issue;
 import ru.sqta.pft.mantis.model.Project;
 
 import javax.xml.rpc.ServiceException;
@@ -21,5 +23,16 @@ public class SoapTests extends TestBase{
     for (Project project : projects) {
       System.out.println(project.getName());
     }
+  }
+
+  @Test
+  public void testCreateIssue() throws MalformedURLException, ServiceException, RemoteException {
+
+    skipIfNotFixed(issueId);
+    Set<Project> projects = app.soap().getProjects();
+    Issue issue = new Issue().withSummary("Test issue")
+            .withDescription("Test issue description").withProject(projects.iterator().next());
+    Issue created = app.soap().addIssue(issue);
+    Assert.assertEquals(issue.getSummary(), created.getSummary());
   }
 }
