@@ -30,19 +30,19 @@ public class TestBase {
     app.ftp().upload(new File("src/test/resources/config_defaults_inc.php"), "config_defaults_inc.php", "config_defaults_inc.php.bak");
   }
 
-  public boolean isIssueOpen(int issueId) throws RemoteException, ServiceException, MalformedURLException {
-    IssueData issue = app.soap().getIssueById(issueId);
-    if (issue.getStatus() = ObjectRef()) {
-      return true;
-      }
-    }
-
-
-  public void skipIfNotFixed(int issueId) {
-    if (isIssueOpen(issueId)) {
-      throw new SkipException("Ignored because of issue " + issueId)
-    }
-  }
+//  public boolean isIssueOpen(int issueId) throws RemoteException, ServiceException, MalformedURLException {
+//    IssueData issue = app.soap().getIssueById(issueId);
+//    if (issue.getStatus() = ObjectRef()) {
+//      return true;
+//      }
+//    }
+//
+//
+//  public void skipIfNotFixed(int issueId) {
+//    if (isIssueOpen(issueId)) {
+//      throw new SkipException("Ignored because of issue " + issueId)
+//    }
+//  }
 
   @AfterSuite(alwaysRun = true)
   public void tearDown() throws Exception {
