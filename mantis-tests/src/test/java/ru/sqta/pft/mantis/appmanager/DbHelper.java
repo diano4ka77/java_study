@@ -1,9 +1,15 @@
 package ru.sqta.pft.mantis.appmanager;
 
+import biz.futureware.mantis.rpc.soap.client.IssueData;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import ru.sqta.pft.mantis.model.Issue;
 import ru.sqta.pft.mantis.model.User;
+
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class DbHelper {
@@ -24,5 +30,16 @@ public class DbHelper {
     session.getTransaction().commit();
     session.close();
     return result;
+  }
+
+  public boolean validateUser(int id) {
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    List<Issue> result = session.createQuery("from Issue").list();
+    List<Integer> list = new ArrayList<Integer>();
+    for (Issue issue : result) {
+      list.add((issue.getId()));
+    }
+    return list.stream().anyMatch("id"::equals);
   }
 }

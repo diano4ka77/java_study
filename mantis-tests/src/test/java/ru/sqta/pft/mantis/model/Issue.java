@@ -1,10 +1,21 @@
 package ru.sqta.pft.mantis.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name = "mantis_bug_table")
 public class Issue {
 
+  @Transient
   private String summary;
+  @Id
   private int id;
+  @Transient
   private Project project;
+  @Transient
   private String description;
 
   public String getSummary() {
