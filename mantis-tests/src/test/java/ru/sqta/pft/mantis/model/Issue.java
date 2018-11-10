@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import java.util.Objects;
 
 @Entity
 @Table(name = "mantis_bug_table")
@@ -13,6 +14,20 @@ public class Issue {
   private String summary;
   @Id
   private int id;
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Issue issue = (Issue) o;
+    return id == issue.id;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
+  }
+
   @Transient
   private Project project;
   @Transient
