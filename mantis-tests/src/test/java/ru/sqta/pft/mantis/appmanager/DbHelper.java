@@ -1,15 +1,11 @@
 package ru.sqta.pft.mantis.appmanager;
 
-import biz.futureware.mantis.rpc.soap.client.IssueData;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import ru.sqta.pft.mantis.model.Issue;
 import ru.sqta.pft.mantis.model.User;
-
-import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class DbHelper {
@@ -40,6 +36,6 @@ public class DbHelper {
     for (Issue issue : result) {
       list.add((issue.getId()));
     }
-    return list.stream().anyMatch("id"::equals);
+    return list.contains(id);
   }
 }

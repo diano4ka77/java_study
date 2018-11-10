@@ -27,5 +27,6 @@
         <property name="hbm2ddl.auto">validate</property>
         <!-- Names the annotated entity class -->
         <mapping class="ru.sqta.pft.mantis.model.User"/>
+        <mapping class="ru.sqta.pft.mantis.model.Issue"/>
     </session-factory>
 </hibernate-configuration>

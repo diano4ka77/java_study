@@ -3,7 +3,6 @@ package ru.sqta.pft.mantis.appmanager;
 import biz.futureware.mantis.rpc.soap.client.*;
 import ru.sqta.pft.mantis.model.Issue;
 import ru.sqta.pft.mantis.model.Project;
-
 import javax.xml.rpc.ServiceException;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
