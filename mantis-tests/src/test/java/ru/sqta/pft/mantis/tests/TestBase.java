@@ -4,21 +4,33 @@ import biz.futureware.mantis.rpc.soap.client.IssueData;
 import biz.futureware.mantis.rpc.soap.client.MantisConnectPortType;
 import biz.futureware.mantis.rpc.soap.client.ObjectRef;
 import biz.futureware.mantis.rpc.soap.client.ProjectData;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
+import org.apache.http.client.fluent.Executor;
+import org.apache.http.client.fluent.Request;
+import org.apache.http.message.BasicNameValuePair;
 import org.openqa.selenium.remote.BrowserType;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import ru.sqta.pft.mantis.appmanager.ApplicationManager;
+import ru.sqta.pft.mantis.model.IssueBugify;
 import ru.sqta.pft.mantis.model.Project;
 
 import javax.xml.rpc.ServiceException;
 import java.io.File;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 import java.util.Arrays;
+import java.util.Set;
 import java.util.stream.Collectors;
+
+import static com.sun.javafx.runtime.async.BackgroundExecutor.getExecutor;
 
 public class TestBase {
 
@@ -53,6 +65,7 @@ public class TestBase {
       throw new SkipException("Ignored because of issue " + issueId);
     }
   }
+
 
   @AfterSuite(alwaysRun = true)
   public void tearDown() throws Exception {
