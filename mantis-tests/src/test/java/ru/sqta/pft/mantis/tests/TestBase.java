@@ -44,23 +44,29 @@ public class TestBase {
     app.ftp().upload(new File("src/test/resources/config_defaults_inc.php"), "config_defaults_inc.php", "config_defaults_inc.php.bak");
   }
 
-  public boolean isIssueOpen(int issueId) throws RemoteException, ServiceException, MalformedURLException {
-    if (app.db().validateUser(issueId)) {
-      IssueData issue = app.soap().getIssueById(issueId);
-      if (issue.getResolution().getName().equals("fixed")) {
-        return false;
-      } else {
-        return true;
-      }
+  public boolean isIssueOpen(int issueId) throws IOException, ServiceException {
+//    if (app.db().validateUser(issueId)) {
+//      IssueData issue = app.soap().getIssueById(issueId);
+//      if (issue.getResolution().getName().equals("fixed")) {
+//        return false;
+//      } else {
+//        return true;
+//      }
+//    } else {
+//      System.out.println("Задачи с заданным идентификатором не существует");
+//      //Предположим, что тест игнорируется, если идентификатор задачи указан неверно
+//      return true;
+//    }
+    String actualState = app.rest().getStateIssue(issueId);
+    if (actualState.equals("Closed") || actualState.equals("Resolved")) {
+      return false;
     } else {
-      System.out.println("Задачи с заданным идентификатором не существует");
-      //Предположим, что тест игнорируется, если идентификатор задачи указан неверно
       return true;
     }
   }
 
 
-  public void skipIfNotFixed(int issueId) throws RemoteException, ServiceException, MalformedURLException {
+  public void skipIfNotFixed(int issueId) throws IOException, ServiceException {
     if (isIssueOpen(issueId)) {
       throw new SkipException("Ignored because of issue " + issueId);
     }

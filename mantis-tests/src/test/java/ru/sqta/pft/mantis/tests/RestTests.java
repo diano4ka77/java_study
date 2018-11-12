@@ -10,6 +10,8 @@ import org.apache.http.client.fluent.Response;
 import org.apache.http.message.BasicNameValuePair;
 import org.testng.annotations.Test;
 import ru.sqta.pft.mantis.model.IssueBugify;
+
+import javax.xml.rpc.ServiceException;
 import java.io.IOException;
 import java.util.Set;
 import static org.testng.Assert.assertEquals;
@@ -18,7 +20,9 @@ import static org.testng.Assert.assertEquals;
 public class RestTests extends TestBase{
 
   @Test
-  public void testCreateIssue() throws IOException {
+  public void testCreateIssue() throws IOException, ServiceException {
+    int blockerIssueId = 1;
+    skipIfNotFixed(blockerIssueId);
     Set<IssueBugify> oldIssues = app.rest().getIssues();
     IssueBugify newIssue = new IssueBugify().withSubject("Test for issue").withDescription("Test description for issue");
     int issueId = app.rest().createIssue(newIssue);

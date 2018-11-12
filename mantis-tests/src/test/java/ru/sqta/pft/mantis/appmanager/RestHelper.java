@@ -41,7 +41,7 @@ public class RestHelper {
     return parsed.getAsJsonObject().get("issue_id").getAsInt();
   }
 
-  public String getIssueById(int id) throws IOException {
+  public String getStateIssue(int id) throws IOException {
     String json = getExecutor().execute(Request.Get("http://bugify.stqa.ru/api/issues/" + id + ".json")).returnContent().asString();
     JsonElement parsed = new JsonParser().parse(json);
     return parsed.getAsJsonObject().get("state_name").getAsString();

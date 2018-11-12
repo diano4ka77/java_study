@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import ru.sqta.pft.mantis.model.Issue;
 import ru.sqta.pft.mantis.model.Project;
 import javax.xml.rpc.ServiceException;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 import java.util.Set;
@@ -21,7 +22,7 @@ public class SoapTests extends TestBase {
   }
 
   @Test
-  public void testCreateIssue() throws MalformedURLException, ServiceException, RemoteException {
+  public void testCreateIssue() throws IOException, ServiceException {
 //    Укажите идентификатор задачи (issueId), блокирующей выполнение теста
     int issueId = 1;
     skipIfNotFixed(issueId);
