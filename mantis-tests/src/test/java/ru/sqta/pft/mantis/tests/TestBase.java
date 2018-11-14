@@ -45,24 +45,24 @@ public class TestBase {
   }
 
   public boolean isIssueOpen(int issueId) throws IOException, ServiceException {
-//    if (app.db().validateUser(issueId)) {
-//      IssueData issue = app.soap().getIssueById(issueId);
-//      if (issue.getResolution().getName().equals("fixed")) {
-//        return false;
-//      } else {
-//        return true;
-//      }
-//    } else {
-//      System.out.println("Задачи с заданным идентификатором не существует");
-//      //Предположим, что тест игнорируется, если идентификатор задачи указан неверно
-//      return true;
-//    }
-    String actualState = app.rest().getStateIssue(issueId);
-    if (actualState.equals("Closed") || actualState.equals("Resolved")) {
-      return false;
+    if (app.db().validateUser(issueId)) {
+      IssueData issue = app.soap().getIssueById(issueId);
+      if (issue.getResolution().getName().equals("fixed")) {
+        return false;
+      } else {
+        return true;
+      }
     } else {
+      System.out.println("Задачи с заданным идентификатором не существует");
+      //Предположим, что тест игнорируется, если идентификатор задачи указан неверно
       return true;
     }
+//    String actualState = app.rest().getStateIssue(issueId);
+//    if (actualState.equals("Closed") || actualState.equals("Resolved")) {
+//      return false;
+//    } else {
+//      return true;
+//    }
   }
 
 
