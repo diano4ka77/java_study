@@ -21,6 +21,7 @@ public class RestTests extends TestBase{
 
   @Test
   public void testCreateIssue() throws IOException, ServiceException {
+    //    Укажите идентификатор задачи (blockerIssueId), блокирующей выполнение теста
     int blockerIssueId = 1;
     skipIfNotFixed(blockerIssueId);
     Set<IssueBugify> oldIssues = app.rest().getIssues();

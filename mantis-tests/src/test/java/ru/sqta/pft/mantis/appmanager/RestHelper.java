@@ -1,8 +1,6 @@
 package ru.sqta.pft.mantis.appmanager;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import org.apache.http.client.fluent.Executor;
 import org.apache.http.client.fluent.Request;
@@ -43,7 +41,11 @@ public class RestHelper {
 
   public String getStateIssue(int id) throws IOException {
     String json = getExecutor().execute(Request.Get("http://bugify.stqa.ru/api/issues/" + id + ".json")).returnContent().asString();
-    JsonElement parsed = new JsonParser().parse(json);
-    return parsed.getAsJsonObject().get("state_name").getAsString();
+    JsonElement jelement = new JsonParser().parse(json);
+    JsonObject jobject = jelement.getAsJsonObject();
+    JsonArray jarray = jobject.getAsJsonArray("issues");
+    JsonObject jsonObject = jarray.get(0).getAsJsonObject();
+    String issueState = jsonObject.get("state_name").toString();
+    return issueState.replaceAll("\"", "");
   }
 }
